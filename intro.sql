@@ -168,3 +168,28 @@ WHERE joining_date > '2025-01-10' AND joining_date < '2027-01-10';
 
 SELECT * FROM employees
 WHERE  name <> 'John Doe'
+
+
+
+SELECT * FROM employees
+ORDER BY empid ASC 
+LIMIT 10 OFFSET 2 * 10; 
+
+
+-- hightest salary of employee
+SELECT * FROM employees
+ORDER BY salary DESC
+LIMIT 1; 
+
+
+
+-- 3rd hightest salary of employee
+
+SELECT * FROM employees
+ORDER BY salary DESC
+LIMIT 1 OFFSET 2 ;
+
+
+-- IN , NOT IN , BETWEEN , LIKE
+
+SELECT * from employees WHERE empid IN(5,6,8);
