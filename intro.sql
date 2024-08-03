@@ -192,4 +192,24 @@ LIMIT 1 OFFSET 2 ;
 
 -- IN , NOT IN , BETWEEN , LIKE
 
-SELECT * from employees WHERE empid IN(5,6,8);
+SELECT * from employees WHERE empid IN(1,2,3);
+
+
+SELECT * from employees WHERE empid NOT IN (1,2,3);
+
+
+SELECT * from employees WHERE salary BETWEEN 40000 and 60000;
+
+
+
+-- Like for search
+SELECT * from employees WHERE name LIKE 'A%'; -- Alice Johnson Amy Red
+
+SELECT * from employees WHERE name LIKE '%a%'; -- dfghfdhafadsf
+
+
+SELECT * from employees WHERE name LIKE '%a'; -- nila
+
+-- specific position
+ SELECT * from employees WHERE name LIKE '__r__'; 
+SELECT * from employees WHERE name LIKE 'V%n'; -- Vera Brown
