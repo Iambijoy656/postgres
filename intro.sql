@@ -1,5 +1,6 @@
 -- Active: 1720975844148@@127.0.0.1@5432@test2
- 
+
+
 --  CREATE Table student (
 --     student_id INT,
 --     first_name VARCHAR(50),
@@ -9,6 +10,7 @@
 --  )
 
 -- ALTER TABLE student RENAME TO learner
+
 
 
 
@@ -156,7 +158,6 @@ SELECT* FROM  departments;
 
 
 
-
 SELECT empid, name, email, salary FROM employees
 
 SELECT * FROM employees
@@ -202,6 +203,7 @@ SELECT * from employees WHERE salary BETWEEN 40000 and 60000;
 
 
 
+
 -- Like for search
 SELECT * from employees WHERE name LIKE 'A%'; -- Alice Johnson Amy Red
 
@@ -212,4 +214,91 @@ SELECT * from employees WHERE name LIKE '%a'; -- nila
 
 -- specific position
  SELECT * from employees WHERE name LIKE '__r__'; 
+
+
 SELECT * from employees WHERE name LIKE 'V%n'; -- Vera Brown
+
+
+
+
+
+------------------------ Joining -----------------
+
+
+-- inner join
+
+SELECT employees.name, employees.email, departments.name
+ from employees 
+INNER JOIN departments ON departments.deptid = employees.deptid;
+
+
+
+-- Left Join 
+
+SELECT *
+ from employees 
+LEFT JOIN departments ON departments.deptid = employees.deptid;
+
+
+
+-- Right Join 
+
+SELECT *
+ from employees 
+RIGHT JOIN departments ON departments.deptid = employees.deptid;
+
+
+-- Full Jpin 
+SELECT *
+ from employees 
+ FULL JOIN departments ON departments.deptid = employees.deptid;
+
+
+
+
+-- ---------------------------Aggregations -------------------
+
+SELECT AVG(salary) avg_salaray from employees;
+
+SELECT MAX(salary) max_salaray from employees;
+
+SELECT SUM(salary) salaray_sum from employees;
+
+
+
+
+-- ----------------------Group By ----------------------------
+
+SELECT deptid, AVG(salary)  from employees GROUP BY deptid;
+
+
+
+SELECT deptid, SUM(salary)  from employees GROUP BY deptid;
+
+
+SELECT * FROM departments d 
+INNER JOIN employees e ON e.deptid = d.deptid
+
+
+
+SELECT d.name , AVG(e.salary),SUM(e.salary),MAX(e.salary),MIN(e.salary) ,count(*)FROM employees e
+ FULL JOIN departments d ON e.deptid = d.deptid
+ GROUP BY d.deptid;
+
+
+
+SELECT d.name , AVG(e.salary),SUM(e.salary),MAX(e.salary),MIN(e.salary) ,count(*)FROM employees e
+ FULL JOIN departments d ON e.deptid = d.deptid
+ GROUP BY d.deptid HAVING AVG(e.salary)> 70000;
+
+
+
+
+
+
+
+
+
+SELECT * from employees;
+
+SELECT * from departments;
